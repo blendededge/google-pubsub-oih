@@ -1,8 +1,14 @@
 const fs = require('fs');
 const { expect } = require('chai');
 const sinon = require('sinon');
-const logger = require('@elastic.io/component-logger')();
 const publish = require('../lib/actions/pub');
+
+// stub logger to prevent errors
+const logger = {
+  debug: () => {},
+  info: () => {},
+  error: () => {},
+};
 
 // eslint-disable-next-line func-names
 describe('publish action', function () {
@@ -26,25 +32,25 @@ describe('publish action', function () {
   };
 
   const msgString = {
-    body: 'This is a string example.',
+    data: 'This is a string example.',
   };
   const msgObject = {
-    body: {
+    data: {
       message: 'This is an object example.',
     },
   };
   const msgBuffer = {
     // eslint-disable-next-line no-use-before-define
-    body: bufferFromBufferString('<Buffer 54 68 69 73 20 69 73 20 61 20 62 75 66 66 65 72 20 65 78 61 6d 70 6c 65 2e>'),
+    data: bufferFromBufferString('<Buffer 54 68 69 73 20 69 73 20 61 20 62 75 66 66 65 72 20 65 78 61 6d 70 6c 65 2e>'),
   };
   const msgArray = {
-    body: ['This is an array example.'],
+    data: ['This is an array example.'],
   };
   const msgInteger = {
-    body: 123,
+    data: 123,
   };
   const msgFloat = {
-    body: 123.45,
+    data: 123.45,
   };
 
   before(() => {
@@ -58,37 +64,37 @@ describe('publish action', function () {
   it('should publish data string', async () => {
     await publish.process.call(self, msgString, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 
   it('should publish data object', async () => {
     await publish.process.call(self, msgObject, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 
   it('should publish data buffer', async () => {
     await publish.process.call(self, msgBuffer, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 
   it('should publish data array', async () => {
     await publish.process.call(self, msgArray, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 
   it('should publish data integer', async () => {
     await publish.process.call(self, msgInteger, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 
   it('should publish data float', async () => {
     await publish.process.call(self, msgFloat, cfg);
     const result = self.emit.getCall(0).args[1];
-    expect(result.body).to.have.a.key('messageID');
+    expect(result.data).to.have.a.key('messageID');
   });
 });
 

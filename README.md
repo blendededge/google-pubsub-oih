@@ -56,7 +56,7 @@ The Subscribe trigger receives a message from a Topic, emits it, and sends an ac
 
 ### Publish
 
-The Publish action retrieves message body from a previous step and sends a message to a Topic while remaining unaware of any existing subscriptions.
+The Publish action retrieves message data from a previous step and sends a message to a Topic while remaining unaware of any existing subscriptions.
 
 #### Configuration
 

@@ -1,9 +1,15 @@
 const fs = require('fs');
 const { expect } = require('chai');
 const sinon = require('sinon');
-const logger = require('@elastic.io/component-logger')();
 const publish = require('../lib/actions/pub');
 const pull = require('../lib/triggers/pull');
+
+// stub logger to prevent errors
+const logger = {
+  debug: () => {},
+  info: () => {},
+  error: () => {},
+};
 
 // eslint-disable-next-line func-names
 describe('pull trigger', function () {
@@ -27,7 +33,7 @@ describe('pull trigger', function () {
   };
 
   const msg = {
-    body: 'sample text',
+    data: 'sample text',
   };
 
   before(async () => {
@@ -42,6 +48,6 @@ describe('pull trigger', function () {
   it('should pull data', async () => {
     await pull.process.call(self, msg, cfg);
     const result = self.emit.getCall(2).args[1];
-    expect(result.body).to.have.a.property('body');
+    expect(result.data).to.have.a.property('data');
   });
 });
