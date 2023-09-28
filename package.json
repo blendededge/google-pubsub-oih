@@ -24,24 +24,24 @@
     "integration-test": "NODE_ENV=test LOG_LEVEL=trace nyc mocha spec-integration --recursive --timeout 50000"
   },
   "engines": {
-    "node": "14"
+    "node": ">=14"
   },
   "dependencies": {
-    "@blendededge/ferryman-extensions": "^1.2.0",
-    "@google-cloud/pubsub": "^3.0.1",
-    "@openintegrationhub/ferryman": "^2.1.0"
+    "@blendededge/ferryman-extensions": "^2.0.3",
+    "@google-cloud/pubsub": "^4.0.6",
+    "@openintegrationhub/ferryman": "^2.3.0"
   },
   "devDependencies": {
-    "chai": "4.2.0",
-    "dotenv": "10.0.0",
-    "eslint": "7.30.0",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-config-xo-space": "0.28.0",
-    "eslint-plugin-import": "2.23.4",
-    "mocha": "9.0.2",
-    "nyc": "15.1.0",
-    "sinon": "9.0.2"
+    "chai": "^4.3.10",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-xo-space": "^0.34.0",
+    "eslint-plugin-import": "^2.28.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "sinon": "^16.0.0"
   },
   "repository": "elastcio/google-pubsub",
   "license": "Apache-2.0",
