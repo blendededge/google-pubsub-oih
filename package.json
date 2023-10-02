@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "pretest": "eslint lib spec-integration --fix",
-    "test": "nyc mocha spec/** --timeout 5000",
+    "test": "CLIENT_CACHE_DISABLED=true nyc mocha spec/** --timeout 5000",
     "integration-test": "NODE_ENV=test LOG_LEVEL=trace nyc mocha spec-integration --recursive --timeout 50000"
   },
   "engines": {

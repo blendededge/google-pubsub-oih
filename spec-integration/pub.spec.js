@@ -8,6 +8,7 @@ const logger = {
   debug: () => {},
   info: () => {},
   error: () => {},
+  child: () => logger,
 };
 
 // eslint-disable-next-line func-names
