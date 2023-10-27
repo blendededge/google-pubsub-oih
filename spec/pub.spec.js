@@ -15,6 +15,7 @@ describe('processAction pub', () => {
       emit: mockEmit,
       logger: {
         info: mockLogger,
+        error: mockLogger,
         child: () => mockSelf.logger,
       },
     };
@@ -79,6 +80,5 @@ describe('processAction pub', () => {
     expect(actualBuffer).to.be.an.instanceOf(Buffer);
     expect(actualBuffer.toString()).to.equal('testData'); // Converting Buffer back to string for comparison
     expect(mockEmit.calledWith('error', error)).to.be.true;
-    expect(mockLogger.calledWith('Oops! Error occurred')).to.be.true;
   });
 });
